@@ -58,4 +58,26 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+  fs.readFile(fileName, 'utf8', (err, data) => {
+    try {
+      let json = JSON.parse(data);
+      let accounts = json.accounts.filter(
+        (account) => account.id != req.params.id
+      );
+      json.accounts = accounts;
+
+      fs.writeFile(fileName, JSON.stringify(json), (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.end();
+        }
+      });
+    } catch (error) {
+      res.status(400).send({ error: error.message });
+    }
+  });
+});
+
 module.exports = router;

@@ -1,1 +1,12 @@
-{"nextId":11,"accounts":[{"id":1,"name":"Jhonny Ribeiro","balance":100},{"id":2,"name":"João das Couves","balance":200},{"id":3,"name":"José da Silva","balance":200.25},{"id":4,"name":"Zé manel","balance":332.25},{"id":5,"name":"Jhonny Ribeiro","balance":700.25},{"id":6,"name":"Jhonny Ribeiro","balance":470},{"id":7,"name":"Jhonny Ribeiro","balance":950},{"id":8,"name":"Geovanna Ribeiro","balance":3220},{"id":9,"name":"Jhonny Ribeiro","balance":1520},{"id":10,"name":"Jhonny Ribeiro","balance":88888}]}
+{
+  "nextId": 11,
+  "accounts": [
+    { "id": 1, "name": "Jhonny Ribeiro", "balance": 100 },
+    { "id": 2, "name": "João das Couves", "balance": 200 },
+    { "id": 3, "name": "José da Silva", "balance": 200.25 },
+    { "id": 4, "name": "Zé manel", "balance": 332.25 },
+    { "id": 5, "name": "Jhonny Ribeiro", "balance": 700.25 },
+    { "id": 6, "name": "Jhonny Ribeiro", "balance": 470 },
+    { "id": 8, "name": "Geovanna Ribeiro", "balance": 3220 }
+  ]
+}
