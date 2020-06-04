@@ -12,25 +12,28 @@ app.get('/', function (req, res) {
 });
 
 app.post('/account', (req, res) => {
-  let params = req.body;
-
-  //   fs.writeFile('accounts.json', JSON.stringify(params), (err) => {
-  //     console.log(err);
-  //   });
-
+  let account = req.body;
   fs.readFile('accounts.json', 'utf8', (err, data) => {
-    console.log(err);
-
-    fs.readFile('accounts.json', 'utf8', (err, data) => {
-      console.log(err);
+    if (!err) {
       try {
         let json = JSON.parse(data);
-        console.log(json);
-        res.send('Post Account');
+        account = { id: json.nextId, ...account };
+        json.nextId++;
+        json.accounts.push(account);
+
+        fs.writeFile('accounts.json', JSON.stringify(json), (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.end();
+          }
+        });
       } catch (error) {
-        res.send(error);
+        res.status(400).send({ error: error.message });
       }
-    });
+    } else {
+      res.status(400).send({ error: err.message });
+    }
   });
 
   //   fs.appendFile('accounts.json', JSON.stringify(params), (err) => {

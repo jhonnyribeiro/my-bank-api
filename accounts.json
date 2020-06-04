@@ -1,1 +1,9 @@
-{"nextId":1,"accounts":[]}
+{
+  "nextId": 5,
+  "accounts": [
+    { "id": 1, "name": "Jhonny Ribeiro", "balance": 100 },
+    { "id": 2, "name": "Jhonny Ribeiro", "balance": 200 },
+    { "id": 3, "name": "Jhonny Ribeiro", "balance": 200.25 },
+    { "id": 4, "name": "Jhonny Ribeiro", "balance": 332.25 }
+  ]
+}
