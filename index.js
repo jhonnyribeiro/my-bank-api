@@ -14,12 +14,28 @@ app.get('/', function (req, res) {
 app.post('/account', (req, res) => {
   let params = req.body;
 
-  fs.writeFile('accounts.json', JSON.stringify(params), (err) => {
+  //   fs.writeFile('accounts.json', JSON.stringify(params), (err) => {
+  //     console.log(err);
+  //   });
+
+  fs.readFile('accounts.json', 'utf8', (err, data) => {
     console.log(err);
+
+    fs.readFile('accounts.json', 'utf8', (err, data) => {
+      console.log(err);
+      try {
+        let json = JSON.parse(data);
+        console.log(json);
+        res.send('Post Account');
+      } catch (error) {
+        res.send(error);
+      }
+    });
   });
 
-  res.send('Post Account');
-  console.log('Post Account');
+  //   fs.appendFile('accounts.json', JSON.stringify(params), (err) => {
+  //     console.log(err);
+  //   });
 });
 
 app.listen(3000, function () {
