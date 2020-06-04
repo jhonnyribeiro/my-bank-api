@@ -39,5 +39,23 @@ app.post('/account', (req, res) => {
 });
 
 app.listen(3000, function () {
+  try {
+    fs.readFile('accounts.json', 'utf8', (err, data) => {
+      if (err) {
+        const initialJson = {
+          nextId: 1,
+          accounts: [],
+        };
+        fs.writeFile('accounts.json', JSON.stringify(initialJson), (err) => {
+          console.log(err);
+        });
+      }
+      console.log(err);
+      console.log(data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
   console.log('API Started!');
 });
