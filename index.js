@@ -50,14 +50,16 @@ app.listen(3000, function () {
           accounts: [],
         };
         fs.writeFile('accounts.json', JSON.stringify(initialJson), (err) => {
-          console.log(err);
+          res.status(400).send({ error: err.message });
         });
       }
-      console.log(err);
+      if (err) {
+        console.log(err);
+      }
       console.log(data);
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).send({ error: error.message });
   }
 
   console.log('API Started!');
