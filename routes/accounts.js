@@ -105,4 +105,31 @@ router.put('/', (req, res) => {
   });
 });
 
+router.post('/transaction', (req, res) => {
+  let params = req.body;
+  fs.readFile(fileName, 'utf8', (err, data) => {
+    try {
+      if (err) throw err;
+      let json = JSON.parse(data);
+      let index = json.accounts.findIndex(
+        (account) => account.id === params.id
+      );
+      if (params.value < 0 && json.accounts[index].balance + params.value < 0) {
+        throw new Error('Não a Saldo suficiente');
+      }
+      json.accounts[index].balance += params.value;
+
+      fs.writeFile(global.fileName, JSON.stringify(json), (err) => {
+        if (err) {
+          res.status(400).send({ error: err.message });
+        } else {
+          res.send(json.accounts[index]);
+        }
+      });
+    } catch (error) {
+      res.status(400).send({ error: error.message });
+    }
+  });
+});
+
 module.exports = router;
