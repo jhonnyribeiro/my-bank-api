@@ -89,7 +89,16 @@ router.put('/', (req, res) => {
       let oldIndex = json.accounts.findIndex(
         (account) => account.id === newAccount.id
       );
-      res.end();
+      json.accounts[oldIndex].name = newAccount.name;
+      json.accounts[oldIndex].balance = newAccount.balance;
+
+      fs.writeFile(global.fileName, JSON.stringify(json), (err) => {
+        if (err) {
+          res.status(400).send({ error: err.message });
+        } else {
+          res.end();
+        }
+      });
     } catch (error) {
       res.status(400).send({ error: error.message });
     }
