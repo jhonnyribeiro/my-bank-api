@@ -1,9 +1,9 @@
 console.log(' JS Running...');
 
-var express = require('express');
-var fs = require('fs').promises;
-var app = express();
-var accountsRouter = require('./routes/accounts.js');
+const express = require('express');
+const fs = require('fs').promises;
+const app = express();
+const accountsRouter = require('./routes/accounts.js');
 
 global.fileName = 'accounts.json';
 

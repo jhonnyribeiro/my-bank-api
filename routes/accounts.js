@@ -1,6 +1,6 @@
-var express = require('express');
-var fs = require('fs').promises;
-var router = express.Router();
+const express = require('express');
+const fs = require('fs').promises;
+const router = express.Router();
 
 router.post('/', async (req, res) => {
   let account = req.body;
