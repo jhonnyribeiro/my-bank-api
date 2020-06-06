@@ -1,10 +1,15 @@
 console.log(' JS Running...');
 
-const express = require('express');
-const fs = require('fs').promises;
+import express from 'express';
+import { promises } from 'fs';
+import winston from 'winston';
+
+const readFile = promises.readFile;
+const writeFile = promises.writeFile;
+
 const app = express();
-const accountsRouter = require('./routes/accounts.js');
-const winston = require('winston');
+// const accountsRouter = require('./routes/accounts.js');
+import accountsRouter from './routes/accounts.js';
 
 global.fileName = 'accounts.json';
 
@@ -31,13 +36,13 @@ app.get('/', function (req, res) {
 
 app.listen(3000, async () => {
   try {
-    /*fs.readFile(fileName, 'utf8', (err, data) => {
+    /*readFile(fileName, 'utf8', (err, data) => {
       if (err) {
         const initialJson = {
           nextId: 1,
           accounts: [],
         };
-        fs.writeFile(fileName, JSON.stringify(initialJson), (err) => {
+        writeFile(fileName, JSON.stringify(initialJson), (err) => {
           res.status(400).send({ error: err.message });
         });
       }
@@ -47,7 +52,7 @@ app.listen(3000, async () => {
       console.log(data);
     });*/
 
-    await fs.readFile(fileName, 'utf8');
+    await readFile(fileName, 'utf8');
     logger.info('API Started!');
   } catch (error) {
     const initialJson = {
@@ -55,7 +60,7 @@ app.listen(3000, async () => {
       accounts: [],
     };
 
-    fs.writeFile(fileName, JSON.stringify(initialJson)).catch((err) => {
+    writeFile(fileName, JSON.stringify(initialJson)).catch((err) => {
       logger.error(err);
     });
   }

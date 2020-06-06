@@ -8,3 +8,9 @@
 2020-06-06T07:54:04.820Z [my-bank-api] info: API Started!
 2020-06-06T07:54:09.507Z [my-bank-api] info: POST /account/transaction - {"id":14,"value":-10}
 2020-06-06T07:55:27.515Z [my-bank-api] info: PUT /account - {"id":14,"name":"Alter Saturday","balance":1218.9}
+2020-06-06T08:15:59.452Z [my-bank-api] info: API Started!
+2020-06-06T08:16:06.108Z [my-bank-api] info: GET /account
+2020-06-06T08:16:40.581Z [my-bank-api] info: DELETE /account/:id - 13
+2020-06-06T08:18:00.663Z [my-bank-api] info: API Started!
+2020-06-06T08:18:08.161Z [my-bank-api] info: GET /account - undefined
+2020-06-06T08:18:15.270Z [my-bank-api] info: GET /account - {"id":1,"name":"Jhonny Ribeiro","balance":800}
